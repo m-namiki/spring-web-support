@@ -57,7 +57,7 @@ public class HiddenTagUtils {
 			for (Field field : fields) {
 				HiddenParam param = field.getAnnotation(HiddenParam.class);
 				if (null != param) {
-					Object fieldValue = FieldUtils.get(field, command);
+					Object fieldValue = SwFieldUtils.get(field, command);
 					String value = null;
 					if (fieldValue instanceof String) {
 						value = (String) fieldValue;
