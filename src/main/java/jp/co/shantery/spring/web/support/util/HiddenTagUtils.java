@@ -21,7 +21,7 @@ import jp.co.shantery.spring.web.support.command.HiddenEnbededCommand;
 public class HiddenTagUtils {
 
 	/** Hidden用パラメータをリクエストに保存する場合のキー名です。 */
-	public static final String HIDDEN_PARAM_KEY = "jp.co.shantery.spring.web.support.HiddenParams";
+	public static final String HIDDEN_PARAMS_KEY = "jp.co.shantery.spring.web.support.HiddenParams";
 
 	/**
 	 * プライベートなコンストラクタです。<br>
@@ -44,30 +44,35 @@ public class HiddenTagUtils {
 			HiddenEnbededCommand command) {
 
 		if (null == command) {
-			request.removeAttribute(HIDDEN_PARAM_KEY);
+			request.removeAttribute(HIDDEN_PARAMS_KEY);
 			return;
 		}
 
-		Map<String, String> map = new HashMap<>();
-		Field[] fields = command.getClass().getFields();
-		for (Field field : fields) {
-			HiddenParam param = field.getAnnotation(HiddenParam.class);
-			if (null != param) {
-				Object fieldValue = FieldUtils.get(field, command);
-				String value = null;
-				if (fieldValue instanceof String) {
-					value = (String) fieldValue;
-				} else if (fieldValue instanceof Boolean) {
-					value = ((Boolean) fieldValue).toString();
-				} else if (fieldValue instanceof Number) {
-					value = String.valueOf((Number) fieldValue);
+		Map<String, String> paramMap = new HashMap<>();
+
+		for (Class<?> c = command.getClass(); c != Object.class; c = c
+				.getSuperclass()) {
+
+			Field[] fields = c.getDeclaredFields();
+			for (Field field : fields) {
+				HiddenParam param = field.getAnnotation(HiddenParam.class);
+				if (null != param) {
+					Object fieldValue = FieldUtils.get(field, command);
+					String value = null;
+					if (fieldValue instanceof String) {
+						value = (String) fieldValue;
+					} else if (fieldValue instanceof Boolean) {
+						value = ((Boolean) fieldValue).toString();
+					} else if (fieldValue instanceof Number) {
+						value = String.valueOf((Number) fieldValue);
+					}
+					if (null == value) {
+						value = "";
+					}
+					paramMap.put(field.getName(), value);
 				}
-				if (null == value) {
-					value = "";
-				}
-				map.put(field.getName(), value);
 			}
 		}
-		request.setAttribute(HIDDEN_PARAM_KEY, map);
+		request.setAttribute(HIDDEN_PARAMS_KEY, paramMap);
 	}
 }
