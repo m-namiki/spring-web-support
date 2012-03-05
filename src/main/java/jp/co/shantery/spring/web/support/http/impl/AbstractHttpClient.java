@@ -34,9 +34,9 @@ import org.codehaus.jackson.map.ObjectMapper;
  * @author m-namiki
  * 
  */
-public abstract class BaseHttpClient {
+public abstract class AbstractHttpClient {
 
-	private static Log logger = LogFactory.getLog(BaseHttpClient.class);
+	private static Log logger = LogFactory.getLog(AbstractHttpClient.class);
 
 	private static final Integer TIME_OUT_SECCOND = 20;
 

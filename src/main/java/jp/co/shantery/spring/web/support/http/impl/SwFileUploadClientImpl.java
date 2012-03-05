@@ -25,7 +25,7 @@ import org.apache.http.entity.mime.content.StringBody;
  * @author m-namiki
  * 
  */
-public class SsFileUploadClientImpl extends BaseHttpClient {
+public class SwFileUploadClientImpl extends AbstractHttpClient {
 
 	/**
 	 * 指定したURLにファイルをアップロードします。

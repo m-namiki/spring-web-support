@@ -11,7 +11,7 @@ import java.io.File;
  * @author pcuser
  * 
  */
-public interface SsFileUploadClient {
+public interface SwFileUploadClient {
 
 	/**
 	 * 指定したURLにファイルをアップロードします。

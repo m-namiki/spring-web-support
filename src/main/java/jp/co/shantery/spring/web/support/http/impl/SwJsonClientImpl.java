@@ -3,17 +3,17 @@
  */
 package jp.co.shantery.spring.web.support.http.impl;
 
-import jp.co.shantery.spring.web.support.http.SsJsonClient;
+import jp.co.shantery.spring.web.support.http.SwJsonClient;
 
 import org.apache.http.client.methods.HttpPost;
 
 /**
- * {@link SsJsonClient}の実装クラスです。
+ * {@link SwJsonClient}の実装クラスです。
  * 
  * @author m-namiki
  * 
  */
-public class SsJsonClientImpl extends BaseHttpClient implements SsJsonClient {
+public class SwJsonClientImpl extends AbstractHttpClient implements SwJsonClient {
 
 	/**
 	 * 指定されたURLにJSONをポストします。
