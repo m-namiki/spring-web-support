@@ -19,7 +19,7 @@ import org.junit.Test;
  * @author m-namiki
  * 
  */
-public class SwDateUtilsTest {
+public class SWDateUtilsTest {
 
 	@Test
 	public void getSystemDateToString() {

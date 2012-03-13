@@ -19,7 +19,7 @@ import org.junit.Test;
  * @author m-namiki
  * 
  */
-public class SwFieldUtilsTest {
+public class SWFieldUtilsTest {
 
 	@Test(expected = NoSuchFieldRuntimeException.class)
 	public void getField() {
