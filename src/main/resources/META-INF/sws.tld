@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<taglib xmlns="http://java.sun.com/xml/ns/j2ee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-jsptaglibrary_2_0.xsd"
+	version="2.0">
+	<tlib-version>3.0</tlib-version>
+	<short-name>sws</short-name>
+	<uri>http://www.shantery.co.jp/</uri>
+	<tag>
+		<name>hiddenParams</name>
+		<tag-class>jp.co.shantery.spring.web.support.taglib.HiddenTag</tag-class>
+		<body-content>empty</body-content>
+	</tag>
+</taglib>
+
+
