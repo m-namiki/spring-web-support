@@ -9,7 +9,7 @@ package jp.co.shantery.spring.web.support.http;
  * @author m-namiki
  * 
  */
-public interface SwFileDownloadClient {
+public interface SWFileDownloadClient {
 
 	/**
 	 * 指定したURLからファイルをダウンロードします。

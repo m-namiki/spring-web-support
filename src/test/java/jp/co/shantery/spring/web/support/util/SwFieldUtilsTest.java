@@ -14,7 +14,7 @@ import jp.co.shantery.spring.web.support.util.bean.MyBean;
 import org.junit.Test;
 
 /**
- * {@link SwFieldUtils}のテストケースです。
+ * {@link SWFieldUtils}のテストケースです。
  * 
  * @author m-namiki
  * 
@@ -23,17 +23,17 @@ public class SwFieldUtilsTest {
 
 	@Test(expected = NoSuchFieldRuntimeException.class)
 	public void getField() {
-		Field nameField = SwFieldUtils.getField(MyBean.class, "name");
+		Field nameField = SWFieldUtils.getField(MyBean.class, "name");
 		assertNotNull(nameField);
 		assertEquals("name", nameField.getName());
 		assertEquals(String.class, nameField.getType());
 
-		Field ageField = SwFieldUtils.getField(MyBean.class, "age");
+		Field ageField = SWFieldUtils.getField(MyBean.class, "age");
 		assertNotNull(ageField);
 		assertEquals("age", ageField.getName());
 		assertEquals(Integer.class, ageField.getType());
 
-		SwFieldUtils.getField(MyBean.class, "address");
+		SWFieldUtils.getField(MyBean.class, "address");
 	}
 
 	@Test
@@ -42,11 +42,11 @@ public class SwFieldUtilsTest {
 		bean.setName("SpringWebSupport");
 		bean.setAge(10);
 
-		Field nameField = SwFieldUtils.getField(MyBean.class, "name");
-		assertEquals("SpringWebSupport", SwFieldUtils.get(nameField, bean));
+		Field nameField = SWFieldUtils.getField(MyBean.class, "name");
+		assertEquals("SpringWebSupport", SWFieldUtils.get(nameField, bean));
 
-		Field ageField = SwFieldUtils.getField(MyBean.class, "age");
-		assertEquals(Integer.valueOf(10), SwFieldUtils.get(ageField, bean));
+		Field ageField = SWFieldUtils.getField(MyBean.class, "age");
+		assertEquals(Integer.valueOf(10), SWFieldUtils.get(ageField, bean));
 	}
 
 }

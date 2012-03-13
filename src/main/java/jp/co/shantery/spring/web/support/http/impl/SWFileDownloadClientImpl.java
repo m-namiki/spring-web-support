@@ -3,7 +3,7 @@
  */
 package jp.co.shantery.spring.web.support.http.impl;
 
-import jp.co.shantery.spring.web.support.http.SwFileDownloadClient;
+import jp.co.shantery.spring.web.support.http.SWFileDownloadClient;
 
 import org.apache.http.client.methods.HttpPost;
 
@@ -13,8 +13,8 @@ import org.apache.http.client.methods.HttpPost;
  * @author m-namiki
  * 
  */
-public class SwFileDownloadClientImpl extends AbstractHttpClient implements
-		SwFileDownloadClient {
+public class SWFileDownloadClientImpl extends AbstractHttpClient implements
+		SWFileDownloadClient {
 
 	/**
 	 * 指定したURLからファイルをダウンロードします。

@@ -14,13 +14,13 @@ import jp.co.shantery.spring.web.support.exception.NoSuchFieldRuntimeException;
  * @author m-namiki
  * 
  */
-public class SwFieldUtils {
+public class SWFieldUtils {
 
 	/**
 	 * プライベートなコンストラクタです。<br>
 	 * 外部からのインスタンス生成は行えません。
 	 */
-	private SwFieldUtils() {
+	private SWFieldUtils() {
 	}
 
 	/**

@@ -9,8 +9,8 @@ import java.lang.reflect.Field;
 import java.util.Date;
 
 import jp.co.shantery.spring.web.support.exception.UnsupportedEncodingRuntimeException;
-import jp.co.shantery.spring.web.support.util.SwClassUtils;
-import jp.co.shantery.spring.web.support.util.SwDateUtils;
+import jp.co.shantery.spring.web.support.util.SWClassUtils;
+import jp.co.shantery.spring.web.support.util.SWDateUtils;
 
 import org.apache.http.HttpEntity;
 import org.apache.http.client.methods.HttpPost;
@@ -25,7 +25,7 @@ import org.apache.http.entity.mime.content.StringBody;
  * @author m-namiki
  * 
  */
-public class SwFileUploadClientImpl extends AbstractHttpClient {
+public class SWFileUploadClientImpl extends AbstractHttpClient {
 
 	/**
 	 * 指定したURLにファイルをアップロードします。
@@ -107,14 +107,14 @@ public class SwFileUploadClientImpl extends AbstractHttpClient {
 			Field[] fields = clazz.getDeclaredFields();
 			for (Field field : fields) {
 				ContentBody body = null;
-				Object obj = SwClassUtils.get(field, param);
+				Object obj = SWClassUtils.get(field, param);
 				if (obj instanceof String) {
 					body = new StringBody((String) obj);
 				} else if (obj instanceof Number) {
 					body = new StringBody(String.valueOf(obj));
 				} else if (obj instanceof Date) {
 					body = new StringBody(
-							(String) SwDateUtils.formatDateToString((Date) obj,
+							(String) SWDateUtils.formatDateToString((Date) obj,
 									"yyyy/MM/dd HH:mm:ss"));
 				}
 				entity.addPart(field.getName(), body);

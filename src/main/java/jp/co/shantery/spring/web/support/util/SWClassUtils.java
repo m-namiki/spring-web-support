@@ -14,7 +14,7 @@ import jp.co.shantery.spring.web.support.exception.NoSuchFieldRuntimeException;
  * @author m-namiki
  * 
  */
-public class SwClassUtils {
+public class SWClassUtils {
 
 	/**
 	 * 指定されたクラスから指定された名称のフィールドを取得して返却します。

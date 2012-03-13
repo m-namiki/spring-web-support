@@ -15,13 +15,13 @@ import org.joda.time.format.DateTimeFormat;
  * @author m-namiki
  * 
  */
-public class SwDateUtils {
+public class SWDateUtils {
 
 	/**
 	 * プライベートなコンストラクタです。<br>
 	 * 外部からのインスタンス生成は行えません。
 	 */
-	private SwDateUtils() {
+	private SWDateUtils() {
 	}
 
 	/**

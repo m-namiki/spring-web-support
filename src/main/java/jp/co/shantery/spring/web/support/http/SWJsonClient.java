@@ -9,7 +9,7 @@ package jp.co.shantery.spring.web.support.http;
  * @author m-namiki
  * 
  */
-public interface SwJsonClient {
+public interface SWJsonClient {
 
 	/**
 	 * 指定されたURLにJSONをポストします。
