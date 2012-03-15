@@ -9,8 +9,8 @@ import java.lang.reflect.Field;
 import java.util.Date;
 
 import jp.co.shantery.spring.web.support.exception.UnsupportedEncodingRuntimeException;
-import jp.co.shantery.spring.web.support.util.SWClassUtils;
 import jp.co.shantery.spring.web.support.util.SWDateUtils;
+import jp.co.shantery.spring.web.support.util.SWFieldUtils;
 
 import org.apache.http.HttpEntity;
 import org.apache.http.client.methods.HttpPost;
@@ -107,7 +107,7 @@ public class SWFileUploadClientImpl extends AbstractHttpClient {
 			Field[] fields = clazz.getDeclaredFields();
 			for (Field field : fields) {
 				ContentBody body = null;
-				Object obj = SWClassUtils.get(field, param);
+				Object obj = SWFieldUtils.get(field, param);
 				if (obj instanceof String) {
 					body = new StringBody((String) obj);
 				} else if (obj instanceof Number) {

@@ -3,10 +3,9 @@
  */
 package jp.co.shantery.spring.web.support.util;
 
-import java.lang.reflect.Field;
+import java.lang.reflect.Type;
 
 import jp.co.shantery.spring.web.support.exception.IllegalAccessRuntimeException;
-import jp.co.shantery.spring.web.support.exception.NoSuchFieldRuntimeException;
 
 /**
  * クラスに関する操作を行うユーティリティクラスです。
@@ -17,46 +16,24 @@ import jp.co.shantery.spring.web.support.exception.NoSuchFieldRuntimeException;
 public class SWClassUtils {
 
 	/**
-	 * 指定されたクラスから指定された名称のフィールドを取得して返却します。
+	 * 指定されたクラスのインスタンスを返却します。
 	 * 
 	 * @param clazz
 	 *            クラス
-	 * @param name
-	 *            フィールド名
-	 * @return フィールド
+	 * @return インスタンス
 	 */
-	public static Field getField(Class<?> clazz, String name) {
-		Field field = null;
+	public static <T> T newInstance(Class<T> clazz) {
 		try {
-			field = clazz.getDeclaredField(name);
-		} catch (SecurityException e) {
-			throw e;
-		} catch (NoSuchFieldException e) {
-			throw new NoSuchFieldRuntimeException(e);
-		}
-		return field;
-	}
-
-	/**
-	 * 指定されたオブジェクトからフィールドの値を取得して返却します。
-	 * 
-	 * @param field
-	 *            フィールド
-	 * @param obj
-	 *            オブジェクト
-	 * @return フィールドの値
-	 */
-	public static Object get(Field field, Object obj) {
-		Object o = null;
-		try {
-			field.setAccessible(true);
-			o = field.get(obj);
-
-		} catch (IllegalArgumentException e) {
-			throw e;
+			return clazz.newInstance();
+		} catch (InstantiationException e) {
+			throw new RuntimeException(e);
 		} catch (IllegalAccessException e) {
-			throw new IllegalAccessRuntimeException(e);
+			throw new IllegalAccessRuntimeException(e.getMessage(), e);
 		}
-		return o;
 	}
+
+	public static Type getParameterType(Object obj) {
+		return obj.getClass().getGenericSuperclass();
+	}
+
 }

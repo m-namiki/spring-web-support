@@ -43,7 +43,7 @@ public class SWFieldUtils {
 		}
 		return field;
 	}
-	
+
 	/**
 	 * 指定されたオブジェクトのフィールドから値を取得します。
 	 * 
@@ -57,6 +57,27 @@ public class SWFieldUtils {
 		try {
 			field.setAccessible(true);
 			return field.get(obj);
+		} catch (IllegalArgumentException e) {
+			throw e;
+		} catch (IllegalAccessException e) {
+			throw new IllegalAccessRuntimeException(e.getMessage(), e);
+		}
+	}
+
+	/**
+	 * 指定されたオブジェクトのフィールドに値を設定します。
+	 * 
+	 * @param field
+	 *            フィールド
+	 * @param obj
+	 *            オブジェクト
+	 * @param value
+	 *            値
+	 */
+	public static void set(Field field, Object obj, Object value) {
+		field.setAccessible(true);
+		try {
+			field.set(obj, value);
 		} catch (IllegalArgumentException e) {
 			throw e;
 		} catch (IllegalAccessException e) {
