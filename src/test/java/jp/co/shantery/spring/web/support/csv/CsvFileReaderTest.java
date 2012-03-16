@@ -12,18 +12,19 @@ import java.util.Iterator;
 import java.util.List;
 
 import jp.co.shantery.spring.web.support.csv.bean.MyBean;
-import jp.co.shantery.spring.web.support.csv.impl.CsvFileParserImpl;
+import jp.co.shantery.spring.web.support.csv.reader.CsvFileReader;
+import jp.co.shantery.spring.web.support.csv.reader.impl.DefaultCsvFileReaderImpl;
 
 import org.junit.Before;
 import org.junit.Test;
 
 /**
- * {@link CsvFileParser}のテストケースです。
+ * {@link CsvFileReader}のテストケースです。
  * 
  * @author m-namiki
  * 
  */
-public class CsvFileParserTest {
+public class CsvFileReaderTest {
 
 	/** テスト用CSVファイル名です。 */
 	private static final String FILE_NAME = "csv_file_parser_test.csv";
@@ -38,9 +39,9 @@ public class CsvFileParserTest {
 
 	@Test
 	public void readAllLines() throws Exception {
-		CsvFileParser parser = new CsvFileParserImpl();
-		parser.setFile(new File(filePath));
-		List<MyBean> list = parser.readAllLines(MyBean.class);
+		CsvFileReader reader = new DefaultCsvFileReaderImpl();
+		reader.setFile(new File(filePath));
+		List<MyBean> list = reader.readAllLines(MyBean.class);
 
 		assertNotNull(list);
 
@@ -54,7 +55,7 @@ public class CsvFileParserTest {
 
 	@Test
 	public void iterator() throws Exception {
-		CsvFileParser parser = new CsvFileParserImpl();
+		CsvFileReader parser = new DefaultCsvFileReaderImpl();
 		parser.setFile(new File(filePath));
 		Iterator<MyBean> itr = parser.iterator(MyBean.class);
 

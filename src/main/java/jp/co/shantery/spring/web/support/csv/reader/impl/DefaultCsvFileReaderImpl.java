@@ -1,7 +1,7 @@
 /**
  * 
  */
-package jp.co.shantery.spring.web.support.csv.impl;
+package jp.co.shantery.spring.web.support.csv.reader.impl;
 
 import java.beans.PropertyDescriptor;
 import java.io.BufferedReader;
@@ -13,7 +13,7 @@ import java.util.Iterator;
 import java.util.List;
 
 import jp.co.shantery.spring.web.support.annotation.CsvColumn;
-import jp.co.shantery.spring.web.support.csv.CsvFileParser;
+import jp.co.shantery.spring.web.support.csv.reader.CsvFileReader;
 import jp.co.shantery.spring.web.support.exception.IORuntimeException;
 
 import org.apache.commons.io.IOUtils;
@@ -25,12 +25,12 @@ import org.springframework.core.convert.TypeDescriptor;
 import org.springframework.format.support.FormattingConversionServiceFactoryBean;
 
 /**
- * {@link CsvFileParser}の実装クラスです。
+ * {@link CsvFileReader}の実装クラスです。
  * 
  * @author m-namiki
  * 
  */
-public class CsvFileParserImpl implements CsvFileParser {
+public class DefaultCsvFileReaderImpl implements CsvFileReader {
 
 	// ----------------------------------------------------------- [Properties]
 
@@ -45,7 +45,7 @@ public class CsvFileParserImpl implements CsvFileParser {
 	/**
 	 * コンストラクタです。
 	 */
-	public CsvFileParserImpl() {
+	public DefaultCsvFileReaderImpl() {
 		FormattingConversionServiceFactoryBean factoryBean = new FormattingConversionServiceFactoryBean();
 		factoryBean.afterPropertiesSet();
 		conversionService = factoryBean.getObject();

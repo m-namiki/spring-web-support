@@ -1,7 +1,7 @@
 /**
  * 
  */
-package jp.co.shantery.spring.web.support.csv;
+package jp.co.shantery.spring.web.support.csv.reader;
 
 import java.io.File;
 import java.util.Iterator;
@@ -10,10 +10,12 @@ import java.util.List;
 /**
  * CSVファイルを読み込むためのインターフェースです。
  * 
+ * TODO バリデーションの追加 TODO ヘッダ有無の判定 TODO CSVの書き出し->これは別クラスで。
+ * 
  * @author m-namiki
  * 
  */
-public interface CsvFileParser {
+public interface CsvFileReader {
 
 	/**
 	 * 読み込むファイルを指定します。
