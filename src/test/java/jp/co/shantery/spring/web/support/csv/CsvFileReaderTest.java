@@ -13,10 +13,13 @@ import java.util.List;
 
 import jp.co.shantery.spring.web.support.csv.bean.MyBean;
 import jp.co.shantery.spring.web.support.csv.reader.CsvFileReader;
-import jp.co.shantery.spring.web.support.csv.reader.impl.DefaultCsvFileReaderImpl;
 
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 /**
  * {@link CsvFileReader}のテストケースです。
@@ -24,10 +27,16 @@ import org.junit.Test;
  * @author m-namiki
  * 
  */
+@RunWith(SpringJUnit4ClassRunner.class)
+@ContextConfiguration(locations = { "/test-context.xml" })
 public class CsvFileReaderTest {
 
 	/** テスト用CSVファイル名です。 */
 	private static final String FILE_NAME = "csv_file_parser_test.csv";
+
+	/** テスト対象クラスです。 */
+	@Autowired
+	private CsvFileReader csvFileReader;
 
 	private String filePath;
 
@@ -39,9 +48,8 @@ public class CsvFileReaderTest {
 
 	@Test
 	public void readAllLines() throws Exception {
-		CsvFileReader reader = new DefaultCsvFileReaderImpl();
-		reader.setFile(new File(filePath));
-		List<MyBean> list = reader.readAllLines(MyBean.class);
+		csvFileReader.setFile(new File(filePath));
+		List<MyBean> list = csvFileReader.readAllLines(MyBean.class);
 
 		assertNotNull(list);
 
@@ -55,9 +63,8 @@ public class CsvFileReaderTest {
 
 	@Test
 	public void iterator() throws Exception {
-		CsvFileReader parser = new DefaultCsvFileReaderImpl();
-		parser.setFile(new File(filePath));
-		Iterator<MyBean> itr = parser.iterator(MyBean.class);
+		csvFileReader.setFile(new File(filePath));
+		Iterator<MyBean> itr = csvFileReader.iterator(MyBean.class);
 
 		int count = 0;
 		while (itr.hasNext()) {

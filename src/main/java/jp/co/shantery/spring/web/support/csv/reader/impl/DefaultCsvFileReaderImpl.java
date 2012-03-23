@@ -23,6 +23,7 @@ import org.springframework.beans.PropertyAccessorFactory;
 import org.springframework.core.convert.ConversionService;
 import org.springframework.core.convert.TypeDescriptor;
 import org.springframework.format.support.FormattingConversionServiceFactoryBean;
+import org.springframework.stereotype.Component;
 
 /**
  * {@link CsvFileReader}の実装クラスです。
@@ -30,6 +31,7 @@ import org.springframework.format.support.FormattingConversionServiceFactoryBean
  * @author m-namiki
  * 
  */
+@Component
 public class DefaultCsvFileReaderImpl implements CsvFileReader {
 
 	// ----------------------------------------------------------- [Properties]
