@@ -3,7 +3,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>jp.co.shantery</groupId>
 	<artifactId>spring-web-support</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>0.0.1</version>
 
 	<properties>
 		<org.springframework-version>3.1.1.RELEASE</org.springframework-version>
@@ -152,4 +152,5 @@
 		</plugins>
 	</build>
 	<name>Spring Web Support Project</name>
+	<url>https://github.com/m-namiki/spring-web-support.git</url>
 </project>
